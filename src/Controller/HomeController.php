@@ -13,7 +13,7 @@ class HomeController
      */
     private $twig;
 
-    public function __construct($twig)
+    public function __construct(Environment $twig)
     {
         $this->twig = $twig;
     }
