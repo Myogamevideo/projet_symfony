@@ -14,7 +14,7 @@ class TopVideoNombreAvisController extends AbstractController{
      */
 
     public function index(): Response{
-        return new Response('cc');
+        return $this->render('pages/TopVideoNombreAvis.html.twig', ['current_menu' => 'TopVideoNombreAvis']);
 
     }
 }

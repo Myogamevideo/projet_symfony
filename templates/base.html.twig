@@ -21,13 +21,12 @@
 
 				<div class="collapse navbar-collapse" id="navbarTogglerDemo03">
 					<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-						<li class="nav-item active">
-							<a class="nav-link text-uppercase" href="#">Home
-								<span class="sr-only">(current)</span>
+						<li class="nav-item">
+							<a class="nav-link text-uppercase {% if current_menu is defined and current_menu == 'home' %} active {% endif %}" href="{{ path('home') }}">Home
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link text-uppercase " href="{{ path('TopVideoNombreAvis.index') }}">Top vidéos nombre avis
+							<a class="nav-link text-uppercase {% if current_menu is defined and current_menu == 'TopVideoNombreAvis' %} active {% endif %}" href="{{ path('TopVideoNombreAvis.index') }}">Top vidéos nombre avis
 							</a>
 						</li>
 						<li class="nav-item">
