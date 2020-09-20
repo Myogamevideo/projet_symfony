@@ -6,16 +6,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomeController extends AbstractController
-{
+class TopVideoNombreAvisController extends AbstractController{
+
     /**
+     * @Route("/TopVideoNombreAvis" , name="TopVideoNombreAvis.index")
      * @return Response
-     * @Route("/" , name="home")
      */
 
-    public function index(): Response
-    {
+    public function index(): Response{
+        return new Response('cc');
 
-        return $this->render($this->twig->render('pages/home.html.twig'));
     }
 }
