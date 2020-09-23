@@ -4,7 +4,9 @@ namespace App\Controller;
 use App\Repository\AvisRepository;
 use App\Repository\VideoRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -113,12 +115,22 @@ class VideoAvisController extends AbstractController
 
     /**
      * @Route("/uniqVideo/{id}" , name="VideoAvisController.uniqVideo")
+     * @param $id
+     * @param Request $request
+     * @param PaginatorInterface $paginator
      * @return Response
      */
-    public function uniqVideo($id): Response
+    public function uniqVideo($id, Request $request, PaginatorInterface $paginator): Response
     {
         $video = $this->repoV->find($id);
-        $avis = $this->repoA->findIdAllAvis($id);
+        $req = $this->repoA->findIdAllAvis($id);
+
+        $avis = $paginator->paginate(
+            $req,
+            $request->query->getInt('page', 1),
+            5
+        );
+
         $nbavis = $this->repoA->findIdVideoNombreAvis($id);
         $avgavis = $this->repoA->findIdVideoMoyenneAvis($id);
         return $this->render('pages/UniqVideo.html.twig', ['current_menu' => 'UniqVideo', 'video' => $video , 'avis' => $avis , 'nbavis' => $nbavis, 'avgavis' => $avgavis]);

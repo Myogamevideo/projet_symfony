@@ -23,7 +23,7 @@
                 <div class="col">
                     <blockquote class="blockquote text-center">
                         {% if avi.commentaire != null %}
-                            <p class="mb-0">" {{ avi.commentaire }} "</p>
+                            <p class="mb-0">{{ avi.datetime|date("m/d/Y \\a\\t g:i") }} : "{{ avi.commentaire }} "</p>
                         {% endif %}
                         <footer class="blockquote-footer">
                             {% for i in 1..avi.note %}
@@ -33,6 +33,9 @@
                     </blockquote>
                 </div>
             {% endfor %}
+            <div class="pagination">
+                {{ knp_pagination_render(avis) }}
+            </div>
         </div>
     </div>
 {% endblock %}
