@@ -1,7 +1,21 @@
 {% extends "base.html.twig" %}
-{% block title 'TopVideoNombreAvis'%}
+{% block title 'TopVideoNombreAvis' %}
 {% block body %}
     <div class="container">
-            <h1>TopVideoNombreAvis</h1>
+        <h1>TopVideoNombreAvis</h1>
+    </div>
+
+    <div class="container">
+        <div class="col flex">
+            {% for avis , video in  videos %}
+                <div class="col">
+                    <h1>{{ video.title }} ( {{ avis }} 👍)</h1>
+                    <iframe id="ytplayer" type="text/html" width="640" height="360"
+                            src="https://www.youtube.com/embed/{{ video.url }}"
+                            frameborder="0">
+                    </iframe>
+                </div>
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

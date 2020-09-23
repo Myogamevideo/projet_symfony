@@ -1,7 +1,3 @@
-body {
-    background-color: lightgray;
-}
-
 /*
  * Globals
  */
@@ -31,7 +27,6 @@ a:hover {
 
 html,
 body {
-    height: 100%;
     background-color: #fff;
 }
 
@@ -44,8 +39,6 @@ body {
 .site-wrapper {
     width: 100%;
     background-color: #333;
-    height: 100%;
-    min-height: 100%;
 }
 
 .cover .btn-lg {

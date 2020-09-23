@@ -47,4 +47,15 @@ class AvisRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findIdVideoNombreAvis($video)
+    {
+        return $this->createQueryBuilder('a')
+            ->select('COUNT(a.avis_video)')
+            ->where('a.avis_video = :video')
+            ->setParameter('video', $video)
+            ->getQuery()
+            ->getSingleResult();
+    }
+
 }
