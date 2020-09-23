@@ -22,14 +22,9 @@
     <list default="true" id="9f813186-5538-4135-9078-3c6583c76fd8" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/app.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/app.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/app.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/entrypoints.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/entrypoints.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/build/runtime.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/TopVideoNombreAvisController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/TopVideoNombreAvisController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/build/app.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/build/app.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/TopVideoNombreAvisController.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Repository/AvisRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/AvisRepository.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Repository/VideoRepository.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Repository/VideoRepository.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/pages/TopVideoNombreAvis.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/TopVideoNombreAvis.html.twig" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/pages/home.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/home.html.twig" afterDir="false" />
@@ -173,6 +168,11 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Drosalys\TEST_Alternance_Symfony\projet_symfony\src\Controller" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -184,7 +184,7 @@
       <workItem from="1600607355124" duration="742000" />
       <workItem from="1600754794349" duration="1415000" />
       <workItem from="1600766488065" duration="2845000" />
-      <workItem from="1600839756379" duration="9555000" />
+      <workItem from="1600839756379" duration="20249000" />
     </task>
     <servers />
   </component>
@@ -204,13 +204,18 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="250" y="256" key="#com.intellij.ide.util.MemberChooser" timestamp="1600853527227">
+      <screen x="0" y="0" width="1782" height="1080" />
+    </state>
+    <state x="250" y="256" key="#com.intellij.ide.util.MemberChooser/0.0.1782.1080/1920.0.1920.1040@0.0.1782.1080" timestamp="1600853527227" />
     <state x="172" y="263" key="NewPhpClassDialog" timestamp="1600767781872">
       <screen x="0" y="0" width="1796" height="1080" />
     </state>
     <state x="172" y="263" key="NewPhpClassDialog/0.0.1796.1080/1920.0.1920.1040@0.0.1796.1080" timestamp="1600767781872" />
-    <state x="732" y="463" key="NewPhpFileDialog" timestamp="1600607460630">
-      <screen x="0" y="0" width="1796" height="1080" />
+    <state x="726" y="463" key="NewPhpFileDialog" timestamp="1600863758275">
+      <screen x="0" y="0" width="1782" height="1080" />
     </state>
+    <state x="726" y="463" key="NewPhpFileDialog/0.0.1782.1080/1920.0.1920.1040@0.0.1782.1080" timestamp="1600863758275" />
     <state x="732" y="463" key="NewPhpFileDialog/0.0.1796.1080/1920.0.1920.1040@0.0.1796.1080" timestamp="1600607460630" />
     <state x="547" y="250" key="run.anything.popup" timestamp="1600846780095">
       <screen x="0" y="0" width="1782" height="1080" />

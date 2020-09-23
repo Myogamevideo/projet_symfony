@@ -1,10 +1,10 @@
 {% extends "base.html.twig" %}
-{% block title 'TopVideoNombreAvis' %}
+{% block title 'TopVideoNote' %}
 {% block body %}
-    <div class="container">
-        <h1 class="p-5">TopVideoNombreAvis</h1>
+    <div class="container" >
+        <h1 class="p-5">TopVideoNote</h1>
         <div class="col flex">
-            {% for avis , video in  videos %}
+            {% for note , video in  videos %}
                 <div class="col">
                     <a class="btn btn-default w-100" href="{{ path('VideoAvisController.uniqVideo', {'id' : video.id} ) }}">
                         <div class="embed-responsive embed-responsive-16by9">
@@ -12,7 +12,7 @@
                                     src="https://www.youtube.com/embed/{{ video.url }}?rel=0" allowfullscreen></iframe>
                         </div>
                         <h1 class="font-weight-bold">{{ video.title }} </h1>
-                        <p>( {{ avis | number_format(0 , '.' , ' ') }} 👍)</p>
+                        <p>( {{ note | number_format(2 , '.' , ' ') }} 👍)</p>
                     </a>
                 </div>
             {% endfor %}

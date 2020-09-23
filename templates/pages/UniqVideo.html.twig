@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+{% block title 'UniqVideo' %}
+{% block body %}
+    <div class="container pt-5">
+        <div class="col border">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item"
+                        src="https://www.youtube.com/embed/{{ video.url }}?rel=0" allowfullscreen></iframe>
+            </div>
+            <div class="row justify-content-between d-flex ">
+                <h1 class="ml-2">{{ video.title }}</h1>
+                <div>
+                    <h5 class="mr-4">( Nombre d'avis : {{ nbavis[1] | number_format(0 , '.' , ' ') }}
+                        👍)</h5>
+                    <h5 class="mr-4">( Avis : {{ avgavis[1] | number_format(2 , '.' , ' ') }}
+                        👍)</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col flex mt-3 border">
+            <h3><u>Commmentaire (avis):</u></h3>
+            {% for avi in  avis %}
+                <div class="col">
+                    <blockquote class="blockquote text-center">
+                        {% if avi.commentaire != null %}
+                            <p class="mb-0">" {{ avi.commentaire }} "</p>
+                        {% endif %}
+                        <footer class="blockquote-footer">
+                            {% for i in 1..avi.note %}
+                                ⭐
+                            {% endfor %}
+                        </footer>
+                    </blockquote>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

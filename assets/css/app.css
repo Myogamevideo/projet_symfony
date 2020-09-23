@@ -1,23 +1,20 @@
 /*
  * Globals
  */
-
-/* Links */
-a,
-a:focus,
-a:hover {
-    color: #fff;
-}
-
 /* Custom default button */
 .btn-default,
 .btn-default:hover,
 .btn-default:focus {
     color: #333;
     text-shadow: none;
+    background-color: #DDDDDD;
     /* Prevent inheritence from `body` */
-    background-color: #fff;
-    border: 1px solid #fff;
+    border: 1px solid #333333;
+}
+
+.btn-default:hover,
+.btn-default:focus{
+    background-color: #5eb5e0;
 }
 
 
@@ -28,6 +25,7 @@ a:hover {
 html,
 body {
     background-color: #fff;
+    height: 100%;
 }
 
 body {
@@ -39,6 +37,8 @@ body {
 .site-wrapper {
     width: 100%;
     background-color: #333;
+    min-height: 100%;
+    height: auto;
 }
 
 .cover .btn-lg {

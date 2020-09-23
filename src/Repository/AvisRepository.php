@@ -54,8 +54,31 @@ class AvisRepository extends ServiceEntityRepository
             ->select('COUNT(a.avis_video)')
             ->where('a.avis_video = :video')
             ->setParameter('video', $video)
+            ->setMaxResults(10)
             ->getQuery()
             ->getSingleResult();
     }
+
+    public function findIdVideoMoyenneAvis($video)
+    {
+        return $this->createQueryBuilder('a')
+            ->select('AVG(a.note)')
+            ->where('a.avis_video = :video')
+            ->setParameter('video', $video)
+            ->setMaxResults(10)
+            ->getQuery()
+            ->getSingleResult();
+    }
+
+    public function findIdAllAvis($video)
+    {
+        return $this->createQueryBuilder('a')
+            ->select('a')
+            ->where('a.avis_video = :video')
+            ->setParameter('video', $video)
+            ->getQuery()
+            ->getResult();
+    }
+
 
 }
