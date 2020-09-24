@@ -38,9 +38,15 @@
                     <a class="nav-link text-uppercase {% if current_menu is defined and current_menu == 'TopVideoNote' %} active {% endif %}"
                        href="{{ path('VideoAvisController.topVideoNote') }}">Tendance</a>
                 </li>
+                {% if not app.user %}
                 <li class="nav-item">
-                    <a class="nav-link text-uppercase" href="#">Votre compte</a>
+                    <a class="nav-link text-uppercase {% if current_menu is defined and current_menu == 'Login' %} active {% endif %}" href="{{ path ('security_login')}}">Connexion</a>
                 </li>
+                {% else %}
+                <li class="nav-item">
+                    <a class="nav-link text-uppercase" href="{{ path ('security_logout')}}">Déconnexion</a>
+                </li>
+                {% endif %}
             </ul>
             <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">

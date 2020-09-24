@@ -1,0 +1,16 @@
+{% extends "base.html.twig" %}
+{% block title 'Registration' %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block body %}
+    <div class="container">
+        <h1>Inscrition :</h1>
+        {{ form_start(form) }}
+        {{ form_row(form.username , {'label' : 'Nom d\'utilisateur :', 'attr' : { 'placeholder' : 'Username'}}) }}
+        {{ form_row(form.email, {'label' : 'Email :', 'attr' : { 'placeholder' : 'Email'}}) }}
+        {{ form_row(form.password, {'label' : 'Mot de passe :', 'attr' : { 'placeholder' : 'Password'}}) }}
+        {{ form_row(form.confirm_password, {'label' : 'Confirmation du mot de passe :', 'attr' : { 'placeholder' : 'Confirm password'}}) }}
+
+        <button type="submit" class="btn btn-sucess">Inscription</button>
+        {{ form_end(form) }}
+    </div>
+{% endblock %}

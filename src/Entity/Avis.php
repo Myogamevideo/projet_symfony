@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\AvisRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -37,8 +39,14 @@ class Avis
      */
     private $avis_video;
 
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="avis")
+     */
+    private $user;
+
     public function __construct(){
         $this->datetime = new \DateTime();
+        $this->user = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -90,6 +98,18 @@ class Avis
     public function setAvisVideo(?Video $avis_video): self
     {
         $this->avis_video = $avis_video;
+
+        return $this;
+    }
+
+    public function getUser(): ?User
+    {
+        return $this->user;
+    }
+
+    public function setUser(?User $user): self
+    {
+        $this->user = $user;
 
         return $this;
     }

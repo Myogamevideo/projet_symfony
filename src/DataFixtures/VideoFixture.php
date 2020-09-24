@@ -3,6 +3,7 @@
 namespace App\DataFixtures;
 
 use App\Entity\Avis;
+use App\Entity\User;
 use App\Entity\Video;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
@@ -27,13 +28,19 @@ class VideoFixture extends Fixture
                 ->setUrl($my_array_of_vars['v']);
             $faker = Factory::create('fr_FR');
             for ($i = 0; $i < rand(1, 12); $i++) {
+                $user = new User();
+                $user
+                    ->setUsername($faker->name)
+                    ->setEmail($faker->email)
+                    ->setPassword($faker->password);
                 $avis = new Avis();
                 $avis
                     ->setNote($faker->numberBetween($min = 0, $max = 5))
                     ->setCommentaire($faker->sentence($nbWords = 6, $variableNbWords = true))
-                    ->setAvisVideo($video);
+                    ->setAvisVideo($video)
+                    ->setUser($user);
+                $manager->persist($user);
                 $manager->persist($avis);
-
             }
             $manager->persist($video);
             $manager->flush();

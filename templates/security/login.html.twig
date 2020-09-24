@@ -1,0 +1,21 @@
+{% extends "base.html.twig" %}
+{% block title 'Login' %}
+{% block body %}
+    <div class="container">
+        <h1>Connexion :</h1>
+        <form action="{{ path('security_login') }}" method="post">
+            <div class="container form-group">
+                <label for="uname"><b>Username</b></label>
+                <input type="text" placeholder="Enter Username" name="_username" required>
+
+                <label for="psw"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="_password" required>
+                <button type="submit">Login</button>
+            </div>
+        </form>
+
+        <div class="container">
+            <span class="psw">Inscription <a href="{{ path('security_registration') }}"> Cliquez ici</a></span>
+        </div>
+    </div>
+{% endblock %}

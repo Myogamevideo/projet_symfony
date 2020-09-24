@@ -20,15 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9f813186-5538-4135-9078-3c6583c76fd8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/projet_symfony.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/projet_symfony.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/bundles.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/bundles.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Controller/VideoAvisController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/VideoAvisController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/symfony.lock" beforeDir="false" afterPath="$PROJECT_DIR$/symfony.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/pages/UniqVideo.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/pages/UniqVideo.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/packages/security.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/packages/security.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/migrations/Version20200920155336.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DataFixtures/VideoFixture.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/DataFixtures/VideoFixture.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Entity/Avis.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Entity/Avis.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/base.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html.twig" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,6 +170,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="php.override.implement.member.chooser.php.doc" value="NONE" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -192,6 +190,7 @@
       <workItem from="1600754794349" duration="1415000" />
       <workItem from="1600766488065" duration="2845000" />
       <workItem from="1600839756379" duration="27601000" />
+      <workItem from="1600936293600" duration="7851000" />
     </task>
     <servers />
   </component>
@@ -211,10 +210,14 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="250" y="256" key="#com.intellij.ide.util.MemberChooser" timestamp="1600853527227">
+    <state x="250" y="256" key="#com.intellij.ide.util.MemberChooser" timestamp="1600939647134">
       <screen x="0" y="0" width="1782" height="1080" />
     </state>
-    <state x="250" y="256" key="#com.intellij.ide.util.MemberChooser/0.0.1782.1080/1920.0.1920.1040@0.0.1782.1080" timestamp="1600853527227" />
+    <state x="250" y="256" key="#com.intellij.ide.util.MemberChooser/0.0.1782.1080/1920.0.1920.1040@0.0.1782.1080" timestamp="1600939647134" />
+    <state x="621" y="295" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1600938839096">
+      <screen x="0" y="0" width="1782" height="1080" />
+    </state>
+    <state x="621" y="295" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1782.1080/1920.0.1920.1040@0.0.1782.1080" timestamp="1600938839096" />
     <state x="172" y="263" key="NewPhpClassDialog" timestamp="1600767781872">
       <screen x="0" y="0" width="1796" height="1080" />
     </state>
