@@ -1,0 +1,9 @@
+{% extends "base.html.twig" %}
+{% block title 'Gestion avis' %}
+{% block body %}
+    <ul id="navigation">
+        {% for item in navigation %}
+            <li>{{ item.caption }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
