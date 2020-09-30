@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Repository\AvisRepository;
+use App\Repository\UserRepository;
 use App\Repository\VideoRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
@@ -25,18 +26,24 @@ class VideoAvisController extends AbstractController
      * @var EntityManagerInterface
      */
     private $em;
+    /**
+     * @var UserRepository
+     */
+    private $repoU;
 
     /**
      * VideoAvisController constructor.
      * @param VideoRepository $repoV
      * @param AvisRepository $repoA
+     * @param UserRepository $repoU
      * @param EntityManagerInterface $em
      */
-    public function __construct(VideoRepository $repoV, AvisRepository $repoA, EntityManagerInterface $em)
+    public function __construct(VideoRepository $repoV, AvisRepository $repoA, UserRepository $repoU , EntityManagerInterface $em)
     {
         $this->repoV = $repoV;
         $this->repoA = $repoA;
         $this->em = $em;
+        $this->repoU = $repoU;
     }
 
     /**
@@ -123,16 +130,22 @@ class VideoAvisController extends AbstractController
     public function uniqVideo($id, Request $request, PaginatorInterface $paginator): Response
     {
         $video = $this->repoV->find($id);
-        $req = $this->repoA->findIdAllAvis($id);
+        $avis = $this->repoA->findIdAllAvis($id);
 
-        $avis = $paginator->paginate(
-            $req,
+        foreach ($avis as $avi){
+            $user = $avi->getUser()->getUsername();
+            $tabavis[$user] = $avi;
+        }
+        dump($tabavis);
+
+        $req = $paginator->paginate(
+            $tabavis,
             $request->query->getInt('page', 1),
             5
         );
 
         $nbavis = $this->repoA->findIdVideoNombreAvis($id);
         $avgavis = $this->repoA->findIdVideoMoyenneAvis($id);
-        return $this->render('pages/UniqVideo.html.twig', ['current_menu' => 'UniqVideo', 'video' => $video , 'avis' => $avis , 'nbavis' => $nbavis, 'avgavis' => $avgavis]);
+        return $this->render('pages/UniqVideo.html.twig', ['current_menu' => 'UniqVideo', 'video' => $video , 'avis' => $req , 'nbavis' => $nbavis, 'avgavis' => $avgavis]);
     }
 }

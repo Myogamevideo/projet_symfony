@@ -47,4 +47,14 @@ class UserRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findIdUser($avis)
+    {
+        return $this->createQueryBuilder('a')
+            ->select('a')
+            ->where('a.id = :avis')
+            ->setParameter('avis', $avis)
+            ->getQuery()
+            ->getResult();
+    }
 }

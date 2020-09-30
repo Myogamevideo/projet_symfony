@@ -19,11 +19,11 @@
         </div>
         <div class="col flex mt-3 border">
             <h3><u>Commmentaire (avis):</u></h3>
-            {% for avi in  avis %}
+            {% for user , avi in  avis %}
                 <div class="col">
                     <blockquote class="blockquote text-center">
                         {% if avi.commentaire != null %}
-                            <p class="mb-0">{{ avi.datetime|date("m/d/Y \\a\\t g:i") }} : "{{ avi.commentaire }} "</p>
+                        <p class="mb-0"> | <span class="font-weight-light"> {{ avi.datetime|date("m/d/Y \\a\\t g:i") }} </span> | <span class="font-weight-bold">{{ user }} </span> : "{{ avi.commentaire }} "</span>
                         {% endif %}
                         <footer class="blockquote-footer">
                             {% for i in 1..avi.note %}
