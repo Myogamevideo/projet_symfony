@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>
-        {% block title %}Welcome!
+        {% block title %}Bonjour !
         {% endblock %}
     </title>
     {% block stylesheets %}
@@ -26,7 +26,7 @@
             <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
                 <li class="nav-item">
                     <a class="nav-link text-uppercase {% if current_menu is defined and current_menu == 'home' %} active {% endif %}"
-                       href="{{ path('home') }}">Home
+                       href="{{ path('home') }}">Accueil
                     </a>
                 </li>
                 <li class="nav-item">
@@ -38,23 +38,45 @@
                     <a class="nav-link text-uppercase {% if current_menu is defined and current_menu == 'TopVideoNote' %} active {% endif %}"
                        href="{{ path('VideoAvisController.topVideoNote') }}">Tendance</a>
                 </li>
-                {% if not app.user %}
-                <li class="nav-item">
-                    <a class="nav-link text-uppercase {% if current_menu is defined and current_menu == 'Login' %} active {% endif %}" href="{{ path ('security_login')}}">Connexion</a>
-                </li>
-                {% else %}
-                <li class="nav-item">
-                    <a class="nav-link text-uppercase" href="{{ path ('security_logout')}}">Déconnexion</a>
-                </li>
+                {% if app.user %}
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase {% if current_menu is defined and current_menu == 'CreateNewVideo' %} active {% endif %}"
+                           href="{{ path('admin.avi.create') }}">Creation avis</a>
+                    </li>
                 {% endif %}
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0 text-uppercase" type="submit">Search</button>
+            <ul class="navbar-nav mt-2 mt-lg-0">
+                {% if not app.user %}
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase {% if current_menu is defined and current_menu == 'Login' %} active {% endif %}"
+                           href="{{ path ('security_login') }}">Connexion</a>
+                    </li>
+                {% else %}
+                    <li class="nav-item bg-dark">
+                        <a class="nav-link text-uppercase text-danger"
+                           href="{{ path ('admin.avi.index') }}">👤 {{ app.user.username }}</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-uppercase" href="{{ path ('security_logout') }}">Déconnexion</a>
+                    </li>
+                {% endif %}
+            </ul>
+            <form class="form-inline my-2 my-lg-0" method="post" action="{{ path('_search') }}">
+                <input class="form-control mr-sm-2" type="search" placeholder="Recherche" aria-label="Search"
+                       name="search">
+                <button class="btn btn-outline-success my-2 my-sm-0 text-uppercase" type="submit">Recherche</button>
             </form>
         </div>
     </nav>
-    {% block body %}{% endblock %}
+    {% for label, messages in app.flashes(['danger', 'success']) %}
+        {% for message in messages %}
+            <div class="alert alert-{{ label }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endfor %}
+    {% block body %}
+    {% endblock %}
 </div>
 {% block javascripts %}
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"

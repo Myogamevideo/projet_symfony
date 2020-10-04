@@ -80,5 +80,15 @@ class AvisRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function findIdUserAllAvis($user)
+    {
+        return $this->createQueryBuilder('a')
+            ->select('a')
+            ->where('a.user = :user')
+            ->setParameter('user', $user)
+            ->getQuery()
+            ->getResult();
+    }
+
 
 }

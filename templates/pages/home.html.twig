@@ -1,12 +1,21 @@
 {% extends "base.html.twig" %}
+{% block title 'Accueil' %}
 {% block body %}
     <div class="container pt-5">
         <div class="inner cover">
-            <h1 class="cover-heading">YoutubeWEB</h1>
-            <p class="lead">Faire un site permettant de noter des vidéos YouTube sur 10 pour afficher des tops</p>
+            <h1 class="cover-heading">YoutubeWEB - Accueil</h1>
+            <p class="lead">L'objectif est de faire un site permettant de noter des vidéos YouTube sur 10 puis de les
+                afficher en fonction de plusieurs critères mais aussi pouvoir rajouter, éditer ou supprime ces diférents
+                avis à travers un espace membres</p>
             <p class="lead">
-                <a href="{{ path('VideoAvisController.topVideoNombreAvis') }}" class="btn btn-lg btn-default">Solution</a>
+                <a href="{{ path('VideoAvisController.topVideoNombreAvis') }}"
+                   class="btn btn-lg btn-default">Solution</a>
             </p>
+            <a href="https://drosalys.fr/"><img
+                        src="https://drosalys.fr/wp-content/themes/drosalys/build/images/LogoDefinitif.png"
+                        class="img-thumbnail img-fluid"></a>
+            <a href="https://symfony.com/"><img src="https://symfony.com/images/logos/header-logo.svg"
+                                                class="img-thumbnail img-fluid"></a>
         </div>
     </div>
 {% endblock %}

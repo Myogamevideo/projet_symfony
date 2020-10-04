@@ -1,5 +1,5 @@
 {% extends "base.html.twig" %}
-{% block title 'UniqVideo' %}
+{% block title video.title %}
 {% block body %}
     <div class="container pt-5">
         <div class="col border">
@@ -18,18 +18,35 @@
             </div>
         </div>
         <div class="col flex mt-3 border">
-            <h3><u>Commmentaire (avis):</u></h3>
-            {% for user , avi in  avis %}
+            <h3><u>Créer un avis :</u></h3>
+            {% if app.user %}
+                <div class="row">
+                    <div class="col flex">
+                        {{ form_start(form) }}
+                        {{ form_row(form.note , {'label' : 'Note (min = 1 / max = 10) :', 'attr' : { 'placeholder' : 'Note (min = 1 / max = 10)'}}) }}
+                        {{ form_row(form.commentaire , {'label' : 'Commentaire :', 'attr' : { 'placeholder' : 'Commentaire'}}) }}
+                        {{ form_row(form._token) }}
+                        <button class="btn btn-primary">Création et enregistrement</button>
+                        {{ form_end(form, {'render_rest': false}) }}
+                    </div>
+                </div>
+            {% else %}
+                <p class="text-warning">Connectez-vous pour créer un avis</p>
+            {% endif %}
+            <h3><u>Commmentaire (avis) :</u></h3>
+            {% for avi in  avis %}
                 <div class="col">
                     <blockquote class="blockquote text-center">
-                        {% if avi.commentaire != null %}
-                        <p class="mb-0"> | <span class="font-weight-light"> {{ avi.datetime|date("m/d/Y \\a\\t g:i") }} </span> | <span class="font-weight-bold">{{ user }} </span> : "{{ avi.commentaire }} "</span>
-                        {% endif %}
-                        <footer class="blockquote-footer">
-                            {% for i in 1..avi.note %}
-                                ⭐
-                            {% endfor %}
-                        </footer>
+                        {% if avi[1].commentaire != null %}
+                        <p class="mb-0"> | <span
+                                    class="font-weight-light"> {{ avi[1].datetime|date("m/d/Y \\a\\t g:i") }} </span> |
+                            <span class="font-weight-bold">{{ avi[0] }} </span> : "{{ avi[1].commentaire }} "</span>
+                            {% endif %}
+                            <footer class="blockquote-footer">
+                                {% for i in 1..avi[1].note %}
+                                    ⭐
+                                {% endfor %}
+                            </footer>
                     </blockquote>
                 </div>
             {% endfor %}

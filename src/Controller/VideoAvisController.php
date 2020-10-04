@@ -1,12 +1,16 @@
 <?php
 namespace App\Controller;
 
+use App\Entity\Avis;
+use App\Form\AvisType;
 use App\Repository\AvisRepository;
 use App\Repository\UserRepository;
 use App\Repository\VideoRepository;
+use ArrayObject;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -52,35 +56,6 @@ class VideoAvisController extends AbstractController
      */
     public function topVideoNombreAvis(): Response
     {
-        /*
-        $video = new Video();
-        $video->setTitle("ccc")->setUrl("https://www.youtube.com/watch?v=Gv7EUDzq2Z8&t=18s");
-
-        $avis = new Avis();
-        $avis->setAvisVideo($video)->setNote(2);
-
-        $am = $this->getDoctrine()->getManager();
-        $am->persist($video);
-        $am->persist($avis);
-        $am->flush();
-        */
-
-        /*
-        $repo = $this->getDoctrine()->getRepository(Video::class);
-        dump($repo);
-         */
-
-        /*
-        $video = $this->repo->find(1);
-        $video = $this->repo->findAll();
-        $video = $this->repo->findOneBy(['title' => 'aaaaaaaa']);
-        */
-
-        /*
-        $video[0]->setTitle("ababab");
-        $this->em->flush();
-        */
-
         $videos = $this->repoV->findAll();
         foreach ($videos as $video) {
             $video = $video->getId();
@@ -90,7 +65,7 @@ class VideoAvisController extends AbstractController
         }
         foreach ($tab as $key => $val) {
             $video = $this->repoV->find($key);
-            $tabvideo[$val] = $video;
+            $tabvideo[] = array($video,$val);
         }
         dump($tab);
         dump($tabvideo);
@@ -113,7 +88,7 @@ class VideoAvisController extends AbstractController
         }
         foreach ($tab as $key => $val) {
             $video = $this->repoV->find($key);
-            $tabvideo[$val] = $video;
+            $tabvideo[] = array($video,$val);
         }
         dump($tab);
         dump($tabvideo);
@@ -121,7 +96,7 @@ class VideoAvisController extends AbstractController
     }
 
     /**
-     * @Route("/uniqVideo/{id}" , name="VideoAvisController.uniqVideo")
+     * @Route("/unique/{id}" , name="VideoAvisController.uniqVideo")
      * @param $id
      * @param Request $request
      * @param PaginatorInterface $paginator
@@ -129,12 +104,16 @@ class VideoAvisController extends AbstractController
      */
     public function uniqVideo($id, Request $request, PaginatorInterface $paginator): Response
     {
-        $video = $this->repoV->find($id);
-        $avis = $this->repoA->findIdAllAvis($id);
-
+        if($this->repoV->find($id) == null){
+            $this->addFlash('danger','Votre vidéo n\'a pas été trouvée !');
+            return $this->redirectToRoute('home');
+        }else{
+            $video = $this->repoV->find($id);
+            $avis = $this->repoA->findIdAllAvis($id);
+        }
         foreach ($avis as $avi){
             $user = $avi->getUser()->getUsername();
-            $tabavis[$user] = $avi;
+            $tabavis[] = array($user,$avi);
         }
         dump($tabavis);
 
@@ -144,8 +123,47 @@ class VideoAvisController extends AbstractController
             5
         );
 
+        $newavis = new Avis();
+        $form = $this->createForm(AvisType::class, $newavis);
+        $form->handleRequest($request);
+        if($form->isSubmitted() and $form->isValid()){
+            $newavis->setAvisVideo($video);
+            $newavis->setUser($this->getUser());
+            $this->em->persist($newavis);
+            $this->em->flush();
+            $this->addFlash('success','Votre avis a été ajouté avec succès !');
+            return $this->redirectToRoute('VideoAvisController.uniqVideo',['id' => $id]);
+        }
+
         $nbavis = $this->repoA->findIdVideoNombreAvis($id);
         $avgavis = $this->repoA->findIdVideoMoyenneAvis($id);
-        return $this->render('pages/UniqVideo.html.twig', ['current_menu' => 'UniqVideo', 'video' => $video , 'avis' => $req , 'nbavis' => $nbavis, 'avgavis' => $avgavis]);
+        return $this->render('pages/UniqVideo.html.twig', ['current_menu' => 'UniqVideo', 'video' => $video , 'avis' => $req , 'nbavis' => $nbavis, 'avgavis' => $avgavis, 'newavis' =>$newavis, 'form' => $form->createView()]);
     }
+
+    /**
+     * @Route("/recherche" , name="_search")
+     * @param Request $request
+     * @return RedirectResponse
+     */
+    public function search(Request $request)
+    {
+        $url = $request->request->get('search');
+        preg_match("/^(?:http(?:s)?:\/\/)?(?:www\.)?(?:m\.)?(?:youtu\.be\/|youtube\.com\/(?:(?:watch)?\?(?:.*&)?v(?:i)?=|(?:embed|v|vi|user)\/))([^\?&\"'>]+)/", $url, $matches);
+        if(!empty($matches[1])){
+            $url = $matches[1];
+        }else{
+            $this->addFlash('danger','Votre vidéo n\'a pas été trouvée !');
+            return $this->redirectToRoute('home');
+        }
+        if($this->repoV->findUrlVideo($url) == null){
+            $this->addFlash('danger','Votre vidéo n\'a pas été trouvée !');
+            return $this->redirectToRoute('home');
+        }else{
+            $video = $this->repoV->findUrlVideo($url);
+        }
+        return $this->redirectToRoute('VideoAvisController.uniqVideo',['id' => $video->getId()]);
+    }
+
+
+
 }

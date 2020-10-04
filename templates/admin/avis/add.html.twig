@@ -1,0 +1,20 @@
+{% extends "base.html.twig" %}
+{% block title 'Creation d\'un avis' %}
+{% block body %}
+    <div class="container">
+        <h1 class="p-5">Creation d'un avis</h1>
+        <div class="row">
+            <div class="col flex">
+                {{ form_start(formvideo) }}
+                {{ form_row(formvideo.url , {'label' : 'URL [video youtube] :', 'attr' : { 'placeholder' : 'URL [video youtube]'}}) }}
+                {{ form_start(formavis) }}
+                {{ form_row(formavis.note , {'label' : 'Note (min = 1 / max = 10) :', 'attr' : { 'placeholder' : 'Note (min = 1 / max = 10)'}}) }}
+                {{ form_row(formavis.commentaire , {'label' : 'Commentaire :', 'attr' : { 'placeholder' : 'Commentaire'}}) }}
+                {{ form_row(formavis._token) }}
+                <button class="btn btn-primary">Création et enregistrement</button>
+                {{ form_end(formvideo) }}
+                {{ form_end(formavis, {'render_rest': false}) }}
+            </div>
+        </div>
+    </div>
+{% endblock %}

@@ -49,4 +49,14 @@ class VideoRepository extends ServiceEntityRepository
     }
     */
 
+    public function findUrlVideo($url)
+    {
+        return $this->createQueryBuilder('a')
+            ->select('a')
+            ->where('a.url = :url')
+            ->setParameter('url', $url)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
 }

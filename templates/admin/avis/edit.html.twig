@@ -1,0 +1,26 @@
+{% extends "base.html.twig" %}
+{% block title 'Edition d\'un avis' %}
+{% block body %}
+    <div class="container">
+        <h1 class="p-5">Edition d\'un avis</h1>
+        <div class="row">
+            <div class="col flex">
+                {{ form_start(form) }}
+                {{ form_row(form.datetime , {'label' : 'Date et Heure :', 'attr' : { 'placeholder' : 'Date and Time'}}) }}
+                {{ form_row(form.note , {'label' : 'Note (min = 1 / max = 10) :', 'attr' : { 'placeholder' : 'Note (min = 1 / max = 10)'}}) }}
+                {{ form_row(form.commentaire , {'label' : 'Commentaire :', 'attr' : { 'placeholder' : 'Commentaire'}}) }}
+                <button class="btn btn-primary">Editer et enregistrer</button>
+                {{ form_end(form) }}
+            </div>
+            <div class="col border">
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item"
+                            src="https://www.youtube.com/embed/{{ video.url }}?rel=0" allowfullscreen></iframe>
+                </div>
+                <div class="row justify-content-between d-flex ">
+                    <h1 class="ml-2">{{ video.title }}</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
